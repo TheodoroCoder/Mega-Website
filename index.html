@@ -1,1 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Box - Mini Jogos</title>
+    <!-- Tailwind CSS CDN para estilização moderna -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .font-arcade { font-family: 'Press Start 2P', monospace; }
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex flex-col items-center justify-between">
+    <!-- Header -->
+    <header class="w-full py-6 bg-slate-900 border-b border-slate-800 shadow-lg text-center">
+        <h1 class="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent font-arcade">Arcade Box</h1>
+        <p class="text-slate-400 text-sm mt-1">Divirta-se com mini-jogos clássicos e educativos!</p>
+    </header>
 
+    <!-- Main Container -->
+    <main class="w-full max-w-4xl p-4 flex-1 flex flex-col items-center justify-center">
+        <!-- Menu Principal -->
+        <div id="menu" class="w-full grid grid-cols-1 sm:grid-cols-2 gap-6 my-auto">
+            <button onclick="switchGame('snake')" class="bg-gradient-to-br from-green-600 to-emerald-800 hover:from-green-500 hover:to-emerald-700 p-6 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-green-500/30">
+                <span class="text-4xl mb-2">🐍</span>
+                <h2 class="text-xl font-bold font-arcade">Jogo da Cobrinha</h2>
+                <p class="text-xs text-green-200 mt-2 text-center">Coma a maçã e cresça sem bater nas paredes!</p>
+            </button>
+            <button onclick="switchGame('travalavra')" class="bg-gradient-to-br from-purple-600 to-indigo-800 hover:from-purple-500 hover:to-indigo-700 p-6 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-purple-500/30">
+                <span class="text-4xl mb-2">🔤</span>
+                <h2 class="text-xl font-bold font-arcade">TravaLávrase</h2>
+                <p class="text-xs text-purple-200 mt-2 text-center">Descubra a palavra secreta em 6 tentativas!</p>
+            </button>
+            <button onclick="switchGame('cacapalavra')" class="bg-gradient-to-br from-blue-600 to-cyan-800 hover:from-blue-500 hover:to-cyan-700 p-6 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-blue-500/30">
+                <span class="text-4xl mb-2">🔍</span>
+                <h2 class="text-xl font-bold font-arcade">Caça-Palavras</h2>
+                <p class="text-xs text-blue-200 mt-2 text-center">Encontre as palavras escondidas na grade!</p>
+            </button>
+            <button onclick="switchGame('matematica')" class="bg-gradient-to-br from-amber-600 to-orange-800 hover:from-amber-500 hover:to-orange-700 p-6 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-amber-500/30">
+                <span class="text-4xl mb-2">➕</span>
+                <h2 class="text-xl font-bold font-arcade">Desafio Matemático</h2>
+                <p class="text-xs text-amber-200 mt-2 text-center">Resolva operações rápidas e teste seu cérebro!</p>
+            </button>
+        </div>
+
+        <!-- 1. Jogo da Cobrinha -->
+        <div id="game-snake" class="hidden flex flex-col items-center w-full">
+            <div class="flex justify-between w-full max-w-[400px] mb-4 items-center">
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Voltar</button>
+                <div class="text-lg font-bold">Pontos: <span id="snake-score">0</span></div>
+            </div>
+            <canvas id="snakeCanvas" width="400" height="400" class="border-4 border-slate-700 rounded-lg bg-black shadow-2xl"></canvas>
+            <div class="mt-4 text-xs text-slate-400">Use as setas do teclado ou W, A, S, D para controlar.</div>
+        </div>
+
+        <!-- 2. TravaLávrase -->
+        <div id="game-travalavra" class="hidden flex flex-col items-center w-full">
+            <div class="flex justify-between w-full max-w-md mb-4 items-center">
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Voltar</button>
+                <div class="text-lg font-bold">Tentativa: <span id="tr-attempt">1</span>/6</div>
+            </div>
+            <div id="tr-grid" class="grid grid-rows-6 gap-2 mb-4"></div>
+            <div id="tr-message" class="text-sm font-semibold mb-2 h-6 text-yellow-400"></div>
+            <div class="flex gap-2 mb-2">
+                <input type="text" id="tr-input" maxlength="5" class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-lg uppercase text-center font-bold tracking-widest w-40 text-xl focus:outline-none focus:border-purple-500" placeholder="PALAVRA">
+                <button onclick="submitTravalavra()" class="bg-purple-600 hover:bg-purple-500 px-6 py-2 rounded-lg font-bold shadow">Enviar</button>
+            </div>
+            <button onclick="initTravalavra()" class="text-xs text-slate-400 underline mt-2">Reiniciar Jogo</button>
+        </div>
+
+        <!-- 3. Caça-Palavras -->
+        <div id="game-cacapalavra" class="hidden flex flex-col items-center w-full">
+            <div class="flex justify-between w-full max-w-md mb-4 items-center">
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Voltar</button>
+                <div class="text-sm">Encontradas: <span id="cp-found">0</span>/4</div>
+            </div>
+            <p class="text-xs text-slate-400 mb-3">Palavras para achar: <span id="cp-words-list" class="font-bold text-cyan-400"></span></p>
+            <div id="cp-grid" class="grid grid-cols-8 gap-1 bg-slate-900 p-3 rounded-lg border border-slate-700 mb-4 select-none"></div>
+            <div id="cp-message" class="text-sm font-semibold text-green-400 h-6"></div>
+            <button onclick="initCacaPalavra()" class="text-xs text-slate-400 underline mt-2">Reiniciar Jogo</button>
+        </div>
+
+        <!-- 4. Matemática -->
+        <div id="game-matematica" class="hidden flex flex-col items-center w-full max-w-md">
+            <div class="flex justify-between w-full mb-6 items-center">
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Voltar</button>
+                <div class="text-lg font-bold">Acertos: <span id="math-score">0</span></div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl w-full text-center shadow-xl">
+                <div id="math-question" class="text-3xl font-bold font-arcade mb-6 text-amber-400">5 + 3 = ?</div>
+                <div class="flex gap-2 justify-center mb-4">
+                    <input type="number" id="math-input" class="bg-slate-800 border border-slate-700 px-4 py-3 rounded-lg text-center font-bold text-2xl w-36 focus:outline-none focus:border-amber-500" placeholder="Resposta">
+                    <button onclick="submitMath()" class="bg-amber-600 hover:bg-amber-500 px-6 py-3 rounded-lg font-bold shadow text-lg">Responder</button>
+                </div>
+                <div id="math-feedback" class="text-sm font-semibold h-6"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-4 text-center text-xs text-slate-500 border-t border-slate-900">
+        Criado com HTML, Tailwind CSS e JavaScript puro.
+    </footer>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        const menu = document.getElementById('menu');
+        const games = {
+            snake: document.getElementById('game-snake'),
+            travalavra: document.getElementById('game-travalavra'),
+            cacapalavra: document.getElementById('game-cacapalavra'),
+            matematica: document.getElementById('game-matematica')
+        };
+
+        function switchGame(gameName) {
+            menu.classList.add('hidden');
+            Object.values(games).forEach(g => g.classList.add('hidden'));
+            games[gameName].classList.remove('hidden');
+
+            if(gameName === 'snake') startSnake();
+            if(gameName === 'travalavra') initTravalavra();
+            if(gameName === 'cacapalavra') initCacaPalavra();
+            if(gameName === 'matematica') initMath();
+        }
+
+        function returnToMenu() {
+            Object.values(games).forEach(g => g.classList.add('hidden'));
+            menu.classList.remove('hidden');
+            stopSnake();
+        }
+
+        // --- 1. JOGO DA COBRINHA ---
+        let snakeInterval;
+        const canvas = document.getElementById('snakeCanvas');
+        const ctx = canvas.getContext('2d');
+        let snake = [];
+        let food = {x: 0, y: 0};
+        let dx = 20, dy = 0;
+        let snakeScore = 0;
+        let changingDirection = false;
+
+        function startSnake() {
+            stopSnake();
+            snake = [{x: 160, y: 160}, {x: 140, y: 160}, {x: 120, y: 160}];
+            snakeScore = 0;
+            document.getElementById('snake-score').innerText = snakeScore;
+            dx = 20; dy = 0;
+            createFood();
+            snakeInterval = setInterval(mainSnake, 100);
+        }
+
+        function stopSnake() {
+            clearInterval(snakeInterval);
+        }
+
+        function mainSnake() {
+            if (hasGameEnded()) {
+                stopSnake();
+                alert('Fim de Jogo! Sua pontuação: ' + snakeScore);
+                startSnake();
+                return;
+            }
+            changingDirection = false;
+            clearCanvas();
+            drawFood();
+            moveSnake();
+            drawSnake();
+        }
+
+        function clearCanvas() {
+            ctx.fillStyle = "#000";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawSnake() {
+            snake.forEach((part, index) => {
+                ctx.fillStyle = index === 0 ? '#10b981' : '#34d399';
+                ctx.strokeStyle = '#065f46';
+                ctx.fillRect(part.x, part.y, 20, 20);
+                ctx.strokeRect(part.x, part.y, 20, 20);
+            });
+        }
+
+        function moveSnake() {
+            const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+            snake.unshift(head);
+            const hasEatenFood = snake[0].x === food.x && snake[0].y === food.y;
+            if (hasEatenFood) {
+                snakeScore += 10;
+                document.getElementById('snake-score').innerText = snakeScore;
+                createFood();
+            } else {
+                snake.pop();
+            }
+        }
+
+        function randomFood(min, max) {
+            return Math.round((Math.random() * (max-min) + min) / 20) * 20;
+        }
+
+        function createFood() {
+            food.x = randomFood(0, canvas.width - 20);
+            food.y = randomFood(0, canvas.height - 20);
+            snake.forEach(part => {
+                if (part.x === food.x && part.y === food.y) createFood();
+            });
+        }
+
+        function drawFood() {
+            ctx.fillStyle = '#ef4444';
+            ctx.strokeStyle = '#991b1b';
+            ctx.fillRect(food.x, food.y, 20, 20);
+            ctx.strokeRect(food.x, food.y, 20, 20);
+        }
+
+        function hasGameEnded() {
+            for (let i = 4; i < snake.length; i++) {
+                if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true;
+            }
+            return snake[0].x < 0 || snake[0].x >= canvas.width || snake[0].y < 0 || snake[0].y >= canvas.height;
+        }
+
+        document.addEventListener("keydown", changeDirection);
+        function changeDirection(event) {
+            const keyPressed = event.keyCode;
+            const LEFT = 37, UP = 38, RIGHT = 39, DOWN = 40;
+            const A = 65, W = 87, D = 68, S = 83;
+
+            if (changingDirection) return;
+
+            if ((keyPressed === LEFT || keyPressed === A) && dx === 0) { dx = -20; dy = 0; changingDirection = true; }
+            if ((keyPressed === UP || keyPressed === W) && dy === 0) { dx = 0; dy = -20; changingDirection = true; }
+            if ((keyPressed === RIGHT || keyPressed === D) && dx === 0) { dx = 20; dy = 0; changingDirection = true; }
+            if ((keyPressed === DOWN || keyPressed === S) && dy === 0) { dx = 0; dy = 20; changingDirection = true; }
+        }
+
+        // --- 2. TRAVALÁVRASE (TERMO) ---
+        const wordsList = ["LIVRO", "CARRO", "FESTA", "TERRA", "JOGOS", "PAPEL", "PORTA", "NOITE", "MUNDO", "PLANO"];
+        let secretWord = "";
+        let trAttempt = 1;
+        let gameOverTr = false;
+
+        function initTravalavra() {
+            secretWord = wordsList[Math.floor(Math.random() * wordsList.length)];
+            trAttempt = 1;
+            gameOverTr = false;
+            document.getElementById('tr-attempt').innerText = trAttempt;
+            document.getElementById('tr-message').innerText = "";
+            const input = document.getElementById('tr-input');
+            input.value = "";
+            input.disabled = false;
+
+            const grid = document.getElementById('tr-grid');
+            grid.innerHTML = "";
+            for(let i=0; i<6; i++) {
+                const row = document.createElement('div');
+                row.className = "flex gap-2 justify-center";
+                for(let j=0; j<5; j++) {
+                    const cell = document.createElement('div');
+                    cell.className = "w-12 h-12 border-2 border-slate-700 rounded-lg flex items-center justify-center font-bold text-xl uppercase bg-slate-900 text-white";
+                    cell.id = `tr-${i}-${j}`;
+                    row.appendChild(cell);
+                }
+                grid.appendChild(row);
+            }
+        }
+
+        function submitTravalavra() {
+            if(gameOverTr) return;
+            const input = document.getElementById('tr-input');
+            const val = input.value.toUpperCase().trim();
+            const msg = document.getElementById('tr-message');
+
+            if(val.length !== 5) {
+                msg.innerText = "A palavra deve ter 5 letras!";
+                return;
+            }
+            msg.innerText = "";
+
+            for(let j=0; j<5; j++) {
+                const cell = document.getElementById(`tr-${trAttempt-1}-${j}`);
+                const letter = val[j];
+                cell.innerText = letter;
+
+                if(secretWord[j] === letter) {
+                    cell.className = "w-12 h-12 border-2 border-green-500 bg-green-600 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-white";
+                } else if(secretWord.includes(letter)) {
+                    cell.className = "w-12 h-12 border-2 border-yellow-500 bg-yellow-600 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-white";
+                } else {
+                    cell.className = "w-12 h-12 border-2 border-slate-700 bg-slate-800 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-slate-400";
+                }
+            }
+
+            if(val === secretWord) {
+                msg.innerText = "Parabéns! Você acertou!";
+                gameOverTr = true;
+                input.disabled = true;
+                return;
+            }
+
+            trAttempt++;
+            document.getElementById('tr-attempt').innerText = trAttempt;
+            input.value = "";
+
+            if(trAttempt > 6) {
+                msg.innerText = `Fim de jogo! A palavra era: ${secretWord}`;
+                gameOverTr = true;
+                input.disabled = true;
+            }
+        }
+
+        // --- 3. CAÇA-PALAVRAS ---
+        const cpWords = ["HTML", "CSS", "JS", "GAME"];
+        let foundCount = 0;
+        let clickedWordLetters = [];
+
+        function initCacaPalavra() {
+            foundCount = 0;
+            clickedWordLetters = [];
+            document.getElementById('cp-found').innerText = foundCount;
+            document.getElementById('cp-words-list').innerText = cpWords.join(", ");
+            document.getElementById('cp-message').innerText = "";
+
+            const grid = document.getElementById('cp-grid');
+            grid.innerHTML = "";
+
+            let matrix = Array(8).fill(null).map(() => Array(8).fill(''));
+            const placements = [
+                {word: "HTML", r: 1, c: 2, dr: 0, dc: 1},
+                {word: "CSS", r: 3, c: 1, dr: 0, dc: 1},
+                {word: "JS", r: 5, c: 4, dr: 0, dc: 1},
+                {word: "GAME", r: 6, c: 2, dr: 1, dc: 0}
+            ];
+
+            placements.forEach(p => {
+                for(let i=0; i<p.word.length; i++) {
+                    matrix[p.r + i*p.dr][p.c + i*p.dc] = p.word[i];
+                }
+            });
+
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            for(let r=0; r<8; r++) {
+                for(let c=0; c<8; c++) {
+                    if(matrix[r][c] === '') {
+                        matrix[r][c] = alphabet[Math.floor(Math.random() * alphabet.length)];
+                    }
+                }
+            }
+
+            for(let r=0; r<8; r++) {
+                for(let c=0; c<8; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = "w-9 h-9 bg-slate-800 hover:bg-slate-700 rounded flex items-center justify-center font-bold text-sm cursor-pointer transition select-none";
+                    cell.innerText = matrix[r][c];
+                    cell.onclick = () => selectCpCell(cell);
+                    grid.appendChild(cell);
+                }
+            }
+        }
+
+        function selectCpCell(cell) {
+            cell.classList.toggle('bg-cyan-600');
+            cell.classList.toggle('bg-slate-800');
+            clickedWordLetters.push(cell.innerText);
+            let currentWord = clickedWordLetters.join('');
+            let guessSpan = document.getElementById('cp-message');
+            guessSpan.innerText = "Tentando: " + currentWord;
+
+            if(cpWords.includes(currentWord)) {
+                guessSpan.innerText = `Você encontrou: ${currentWord}! 🎉`;
+                foundCount++;
+                document.getElementById('cp-found').innerText = foundCount;
+                clickedWordLetters = [];
+                if(foundCount === cpWords.length) {
+                    guessSpan.innerText = "Parabéns! Você encontrou todas as palavras!";
+                }
+            } else if(currentWord.length > 5) {
+                clickedWordLetters = [];
+                guessSpan.innerText = "Palavra incorreta, tente novamente.";
+            }
+        }
+
+        // --- 4. DESAFIO MATEMÁTICO ---
+        let mathScore = 0;
+        let currentAnswer = 0;
+
+        function initMath() {
+            mathScore = 0;
+            document.getElementById('math-score').innerText = mathScore;
+            document.getElementById('math-input').value = "";
+            document.getElementById('math-feedback').innerText = "";
+            generateMathQuestion();
+        }
+
+        function generateMathQuestion() {
+            const ops = ['+', '-', '*'];
+            const op = ops[Math.floor(Math.random() * ops.length)];
+            let n1 = Math.floor(Math.random() * 20) + 1;
+            let n2 = Math.floor(Math.random() * 20) + 1;
+
+            if(op === '-' && n1 < n2) [n1, n2] = [n2, n1];
+            if(op === '*') {
+                n1 = Math.floor(Math.random() * 10) + 1;
+                n2 = Math.floor(Math.random() * 10) + 1;
+            }
+
+            if(op === '+') currentAnswer = n1 + n2;
+            if(op === '-') currentAnswer = n1 - n2;
+            if(op === '*') currentAnswer = n1 * n2;
+
+            document.getElementById('math-question').innerText = `${n1} ${op} ${n2} = ?`;
+        }
+
+        function submitMath() {
+            const input = document.getElementById('math-input');
+            const val = parseInt(input.value);
+            const feedback = document.getElementById('math-feedback');
+
+            if(isNaN(val)) {
+                feedback.innerText = "Digite um número válido!";
+                feedback.className = "text-sm font-semibold h-6 text-red-400";
+                return;
+            }
+
+            if(val === currentAnswer) {
+                mathScore++;
+                document.getElementById('math-score').innerText = mathScore;
+                feedback.innerText = "Correto! Muito bem! 🎯";
+                feedback.className = "text-sm font-semibold h-6 text-green-400";
+                input.value = "";
+                setTimeout(() => { feedback.innerText = ""; generateMathQuestion(); }, 1000);
+            } else {
+                feedback.innerText = `Errado! A resposta era ${currentAnswer}.`;
+                feedback.className = "text-sm font-semibold h-6 text-red-400";
+                input.value = "";
+                setTimeout(() => { feedback.innerText = ""; generateMathQuestion(); }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>
