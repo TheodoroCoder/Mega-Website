@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcade Box - Mini Jogos</title>
-    <!-- Tailwind CSS CDN para estilização moderna -->
+    <title>Arcade Box - Mini Jogos Clássicos</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -16,49 +16,116 @@
     <!-- Header -->
     <header class="w-full py-6 bg-slate-900 border-b border-slate-800 shadow-lg text-center">
         <h1 class="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent font-arcade">Arcade Box</h1>
-        <p class="text-slate-400 text-sm mt-1">Divirta-se com mini-jogos clássicos e educativos!</p>
+        <p class="text-slate-400 text-sm mt-1">Sua coleção de jogos clássicos, arcade e raciocínio!</p>
     </header>
 
     <!-- Main Container -->
-    <main class="w-full max-w-4xl p-4 flex-1 flex flex-col items-center justify-center">
+    <main class="w-full max-w-5xl p-4 flex-1 flex flex-col items-center justify-center">
         <!-- Menu Principal -->
-        <div id="menu" class="w-full grid grid-cols-1 sm:grid-cols-2 gap-6 my-auto">
-            <button onclick="switchGame('snake')" class="bg-gradient-to-br from-green-600 to-emerald-800 hover:from-green-500 hover:to-emerald-700 p-6 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-green-500/30">
+        <div id="menu" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-auto">
+            <button onclick="switchGame('snake')" class="bg-gradient-to-br from-green-600 to-emerald-800 hover:from-green-500 hover:to-emerald-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-green-500/30">
                 <span class="text-4xl mb-2">🐍</span>
-                <h2 class="text-xl font-bold font-arcade">Jogo da Cobrinha</h2>
-                <p class="text-xs text-green-200 mt-2 text-center">Coma a maçã e cresça sem bater nas paredes!</p>
+                <h2 class="text-sm font-bold font-arcade text-center">Cobrinha</h2>
+                <p class="text-xs text-green-200 mt-2 text-center">Coma as maçãs sem bater nas paredes!</p>
             </button>
-            <button onclick="switchGame('travalavra')" class="bg-gradient-to-br from-purple-600 to-indigo-800 hover:from-purple-500 hover:to-indigo-700 p-6 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-purple-500/30">
+            <button onclick="switchGame('pong')" class="bg-gradient-to-br from-cyan-600 to-blue-800 hover:from-cyan-500 hover:to-blue-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-cyan-500/30">
+                <span class="text-4xl mb-2">🏓</span>
+                <h2 class="text-sm font-bold font-arcade text-center">Pong</h2>
+                <p class="text-xs text-cyan-200 mt-2 text-center">Rebata a bola contra a CPU!</p>
+            </button>
+            <button onclick="switchGame('futebol')" class="bg-gradient-to-br from-red-600 to-rose-800 hover:from-red-500 hover:to-rose-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-red-500/30">
+                <span class="text-4xl mb-2">⚽</span>
+                <h2 class="text-sm font-bold font-arcade text-center">Futebol Botão</h2>
+                <p class="text-xs text-red-200 mt-2 text-center">Empurre o disco para marcar gols!</p>
+            </button>
+            <button onclick="switchGame('genius')" class="bg-gradient-to-br from-violet-600 to-purple-800 hover:from-violet-500 hover:to-purple-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-purple-500/30">
+                <span class="text-4xl mb-2">🧠</span>
+                <h2 class="text-sm font-bold font-arcade text-center">Genius</h2>
+                <p class="text-xs text-purple-200 mt-2 text-center">Memória de cores e sons!</p>
+            </button>
+            <button onclick="switchGame('velha')" class="bg-gradient-to-br from-pink-600 to-rose-800 hover:from-pink-500 hover:to-rose-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-pink-500/30">
+                <span class="text-4xl mb-2">❌⭕</span>
+                <h2 class="text-sm font-bold font-arcade text-center">Jogo da Velha</h2>
+                <p class="text-xs text-pink-200 mt-2 text-center">Desafie um amigo ou a CPU!</p>
+            </button>
+            <button onclick="switchGame('travalavra')" class="bg-gradient-to-br from-indigo-600 to-slate-800 hover:from-indigo-500 hover:to-slate-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-indigo-500/30">
                 <span class="text-4xl mb-2">🔤</span>
-                <h2 class="text-xl font-bold font-arcade">TravaLávrase</h2>
-                <p class="text-xs text-purple-200 mt-2 text-center">Descubra a palavra secreta em 6 tentativas!</p>
+                <h2 class="text-sm font-bold font-arcade text-center">TravaLávrase</h2>
+                <p class="text-xs text-indigo-200 mt-2 text-center">Adivinhe a palavra em 6 chances!</p>
             </button>
-            <button onclick="switchGame('cacapalavra')" class="bg-gradient-to-br from-blue-600 to-cyan-800 hover:from-blue-500 hover:to-cyan-700 p-6 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-blue-500/30">
+            <button onclick="switchGame('cacapalavra')" class="bg-gradient-to-br from-teal-600 to-emerald-900 hover:from-teal-500 hover:to-emerald-800 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-teal-500/30">
                 <span class="text-4xl mb-2">🔍</span>
-                <h2 class="text-xl font-bold font-arcade">Caça-Palavras</h2>
-                <p class="text-xs text-blue-200 mt-2 text-center">Encontre as palavras escondidas na grade!</p>
+                <h2 class="text-sm font-bold font-arcade text-center">Caça-Palavras</h2>
+                <p class="text-xs text-teal-200 mt-2 text-center">Encontre os termos na grade!</p>
             </button>
-            <button onclick="switchGame('matematica')" class="bg-gradient-to-br from-amber-600 to-orange-800 hover:from-amber-500 hover:to-orange-700 p-6 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-amber-500/30">
+            <button onclick="switchGame('matematica')" class="bg-gradient-to-br from-amber-600 to-orange-800 hover:from-amber-500 hover:to-orange-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-amber-500/30">
                 <span class="text-4xl mb-2">➕</span>
-                <h2 class="text-xl font-bold font-arcade">Desafio Matemático</h2>
-                <p class="text-xs text-amber-200 mt-2 text-center">Resolva operações rápidas e teste seu cérebro!</p>
+                <h2 class="text-sm font-bold font-arcade text-center">Matemática</h2>
+                <p class="text-xs text-amber-200 mt-2 text-center">Respostas rápidas e precisas!</p>
             </button>
         </div>
 
         <!-- 1. Jogo da Cobrinha -->
         <div id="game-snake" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-[400px] mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Voltar</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
                 <div class="text-lg font-bold">Pontos: <span id="snake-score">0</span></div>
             </div>
             <canvas id="snakeCanvas" width="400" height="400" class="border-4 border-slate-700 rounded-lg bg-black shadow-2xl"></canvas>
-            <div class="mt-4 text-xs text-slate-400">Use as setas do teclado ou W, A, S, D para controlar.</div>
+            <div class="mt-4 text-xs text-slate-400">Setas do teclado ou W, A, S, D para controlar.</div>
         </div>
 
-        <!-- 2. TravaLávrase -->
+        <!-- 2. Pong -->
+        <div id="game-pong" class="hidden flex flex-col items-center w-full">
+            <div class="flex justify-between w-full max-w-[500px] mb-4 items-center">
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <div class="text-lg font-bold">Você: <span id="pong-player">0</span> | CPU: <span id="pong-cpu">0</span></div>
+            </div>
+            <canvas id="pongCanvas" width="500" height="350" class="border-4 border-slate-700 rounded-lg bg-black shadow-2xl"></canvas>
+            <div class="mt-4 text-xs text-slate-400">Mova o mouse ou use Setas para cima/baixo para mover a raquete.</div>
+        </div>
+
+        <!-- 3. Futebol de Botão (Air Hockey Style) -->
+        <div id="game-futebol" class="hidden flex flex-col items-center w-full">
+            <div class="flex justify-between w-full max-w-[500px] mb-4 items-center">
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <div class="text-lg font-bold text-emerald-400">Você: <span id="fut-player">0</span> | CPU: <span id="fut-cpu">0</span></div>
+            </div>
+            <canvas id="futCanvas" width="500" height="350" class="border-4 border-emerald-600 rounded-lg bg-emerald-950 shadow-2xl cursor-none"></canvas>
+            <div class="mt-4 text-xs text-slate-400">Mova o cursor do mouse dentro do campo para rebater o botão/bola!</div>
+        </div>
+
+        <!-- 4. Genius (Memory Game) -->
+        <div id="game-genius" class="hidden flex flex-col items-center w-full">
+            <div class="flex justify-between w-full max-w-xs mb-4 items-center">
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <div class="text-lg font-bold">Rodada: <span id="genius-score">0</span></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 bg-slate-900 p-6 rounded-3xl border border-slate-800">
+                <div id="g-0" onclick="geniusClick(0)" class="w-28 h-28 bg-red-600 rounded-tl-full cursor-pointer opacity-70 hover:opacity-100 transition duration-150"></div>
+                <div id="g-1" onclick="geniusClick(1)" class="w-28 h-28 bg-blue-600 rounded-tr-full cursor-pointer opacity-70 hover:opacity-100 transition duration-150"></div>
+                <div id="g-2" onclick="geniusClick(2)" class="w-28 h-28 bg-yellow-500 rounded-bl-full cursor-pointer opacity-70 hover:opacity-100 transition duration-150"></div>
+                <div id="g-3" onclick="geniusClick(3)" class="w-28 h-28 bg-green-600 rounded-br-full cursor-pointer opacity-70 hover:opacity-100 transition duration-150"></div>
+            </div>
+            <button onclick="startGenius()" class="mt-6 bg-purple-600 hover:bg-purple-500 px-6 py-2 rounded-lg font-bold shadow">Iniciar Jogo</button>
+        </div>
+
+        <!-- 5. Jogo da Velha -->
+        <div id="game-velha" class="hidden flex flex-col items-center w-full">
+            <div class="flex justify-between w-full max-w-xs mb-4 items-center">
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <div id="velha-status" class="text-sm font-bold text-pink-400">Vez de: X</div>
+            </div>
+            <div id="velha-grid" class="grid grid-cols-3 gap-2 bg-slate-800 p-3 rounded-2xl">
+                <!-- 9 casas geradas via JS -->
+            </div>
+            <button onclick="initVelha()" class="mt-4 text-xs text-slate-400 underline">Reiniciar Jogo</button>
+        </div>
+
+        <!-- 6. TravaLávrase -->
         <div id="game-travalavra" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-md mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Voltar</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
                 <div class="text-lg font-bold">Tentativa: <span id="tr-attempt">1</span>/6</div>
             </div>
             <div id="tr-grid" class="grid grid-rows-6 gap-2 mb-4"></div>
@@ -70,10 +137,10 @@
             <button onclick="initTravalavra()" class="text-xs text-slate-400 underline mt-2">Reiniciar Jogo</button>
         </div>
 
-        <!-- 3. Caça-Palavras -->
+        <!-- 7. Caça-Palavras -->
         <div id="game-cacapalavra" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-md mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Voltar</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
                 <div class="text-sm">Encontradas: <span id="cp-found">0</span>/4</div>
             </div>
             <p class="text-xs text-slate-400 mb-3">Palavras para achar: <span id="cp-words-list" class="font-bold text-cyan-400"></span></p>
@@ -82,10 +149,10 @@
             <button onclick="initCacaPalavra()" class="text-xs text-slate-400 underline mt-2">Reiniciar Jogo</button>
         </div>
 
-        <!-- 4. Matemática -->
+        <!-- 8. Matemática -->
         <div id="game-matematica" class="hidden flex flex-col items-center w-full max-w-md">
             <div class="flex justify-between w-full mb-6 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Voltar</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
                 <div class="text-lg font-bold">Acertos: <span id="math-score">0</span></div>
             </div>
             <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl w-full text-center shadow-xl">
@@ -101,7 +168,7 @@
 
     <!-- Footer -->
     <footer class="w-full py-4 text-center text-xs text-slate-500 border-t border-slate-900">
-        Criado com HTML, Tailwind CSS e JavaScript puro.
+        Arcade Box - Jogos clássicos em HTML, CSS e JS puro.
     </footer>
 
     <!-- Lógica JavaScript -->
@@ -109,6 +176,10 @@
         const menu = document.getElementById('menu');
         const games = {
             snake: document.getElementById('game-snake'),
+            pong: document.getElementById('game-pong'),
+            futebol: document.getElementById('game-futebol'),
+            genius: document.getElementById('game-genius'),
+            velha: document.getElementById('game-velha'),
             travalavra: document.getElementById('game-travalavra'),
             cacapalavra: document.getElementById('game-cacapalavra'),
             matematica: document.getElementById('game-matematica')
@@ -119,7 +190,13 @@
             Object.values(games).forEach(g => g.classList.add('hidden'));
             games[gameName].classList.remove('hidden');
 
+            stopAllLoopingGames();
+
             if(gameName === 'snake') startSnake();
+            if(gameName === 'pong') startPong();
+            if(gameName === 'futebol') startFutebol();
+            if(gameName === 'genius') initGenius();
+            if(gameName === 'velha') initVelha();
             if(gameName === 'travalavra') initTravalavra();
             if(gameName === 'cacapalavra') initCacaPalavra();
             if(gameName === 'matematica') initMath();
@@ -128,18 +205,20 @@
         function returnToMenu() {
             Object.values(games).forEach(g => g.classList.add('hidden'));
             menu.classList.remove('hidden');
+            stopAllLoopingGames();
+        }
+
+        function stopAllLoopingGames() {
             stopSnake();
+            stopPong();
+            stopFutebol();
         }
 
         // --- 1. JOGO DA COBRINHA ---
         let snakeInterval;
-        const canvas = document.getElementById('snakeCanvas');
-        const ctx = canvas.getContext('2d');
-        let snake = [];
-        let food = {x: 0, y: 0};
-        let dx = 20, dy = 0;
-        let snakeScore = 0;
-        let changingDirection = false;
+        const sCanvas = document.getElementById('snakeCanvas');
+        const sCtx = sCanvas.getContext('2d');
+        let snake = [], food = {x: 0, y: 0}, dx = 20, dy = 0, snakeScore = 0, changingDir = false;
 
         function startSnake() {
             stopSnake();
@@ -150,294 +229,323 @@
             createFood();
             snakeInterval = setInterval(mainSnake, 100);
         }
-
-        function stopSnake() {
-            clearInterval(snakeInterval);
-        }
+        function stopSnake() { clearInterval(snakeInterval); }
 
         function mainSnake() {
-            if (hasGameEnded()) {
+            if (hasSnakeEnded()) {
                 stopSnake();
-                alert('Fim de Jogo! Sua pontuação: ' + snakeScore);
+                alert('Fim de Jogo! Pontuação: ' + snakeScore);
                 startSnake();
                 return;
             }
-            changingDirection = false;
-            clearCanvas();
-            drawFood();
-            moveSnake();
-            drawSnake();
-        }
-
-        function clearCanvas() {
-            ctx.fillStyle = "#000";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
-
-        function drawSnake() {
-            snake.forEach((part, index) => {
-                ctx.fillStyle = index === 0 ? '#10b981' : '#34d399';
-                ctx.strokeStyle = '#065f46';
-                ctx.fillRect(part.x, part.y, 20, 20);
-                ctx.strokeRect(part.x, part.y, 20, 20);
-            });
-        }
-
-        function moveSnake() {
+            changingDir = false;
+            sCtx.fillStyle = "#000"; sCtx.fillRect(0, 0, sCanvas.width, sCanvas.height);
+            sCtx.fillStyle = '#ef4444'; sCtx.fillRect(food.x, food.y, 20, 20);
+            
             const head = {x: snake[0].x + dx, y: snake[0].y + dy};
             snake.unshift(head);
-            const hasEatenFood = snake[0].x === food.x && snake[0].y === food.y;
-            if (hasEatenFood) {
+            if (snake[0].x === food.x && snake[0].y === food.y) {
                 snakeScore += 10;
                 document.getElementById('snake-score').innerText = snakeScore;
                 createFood();
-            } else {
-                snake.pop();
-            }
-        }
+            } else { snake.pop(); }
 
-        function randomFood(min, max) {
-            return Math.round((Math.random() * (max-min) + min) / 20) * 20;
-        }
-
-        function createFood() {
-            food.x = randomFood(0, canvas.width - 20);
-            food.y = randomFood(0, canvas.height - 20);
-            snake.forEach(part => {
-                if (part.x === food.x && part.y === food.y) createFood();
+            snake.forEach((part, i) => {
+                sCtx.fillStyle = i === 0 ? '#10b981' : '#34d399';
+                sCtx.fillRect(part.x, part.y, 20, 20);
             });
         }
-
-        function drawFood() {
-            ctx.fillStyle = '#ef4444';
-            ctx.strokeStyle = '#991b1b';
-            ctx.fillRect(food.x, food.y, 20, 20);
-            ctx.strokeRect(food.x, food.y, 20, 20);
+        function createFood() {
+            food.x = Math.floor(Math.random() * (sCanvas.width/20)) * 20;
+            food.y = Math.floor(Math.random() * (sCanvas.height/20)) * 20;
         }
+        function hasSnakeEnded() {
+            for (let i = 4; i < snake.length; i++) if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true;
+            return snake[0].x < 0 || snake[0].x >= sCanvas.width || snake[0].y < 0 || snake[0].y >= sCanvas.height;
+        }
+        document.addEventListener("keydown", e => {
+            if (changingDir) return;
+            if ((e.keyCode === 37 || e.keyCode === 65) && dx === 0) { dx = -20; dy = 0; changingDir = true; }
+            if ((e.keyCode === 38 || e.keyCode === 87) && dy === 0) { dx = 0; dy = -20; changingDir = true; }
+            if ((e.keyCode === 39 || e.keyCode === 68) && dx === 0) { dx = 20; dy = 0; changingDir = true; }
+            if ((e.keyCode === 40 || e.keyCode === 83) && dy === 0) { dx = 0; dy = 20; changingDir = true; }
+        });
 
-        function hasGameEnded() {
-            for (let i = 4; i < snake.length; i++) {
-                if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true;
+        // --- 2. PONG ---
+        let pongInterval;
+        const pCanvas = document.getElementById('pongCanvas');
+        const pCtx = pCanvas.getContext('2d');
+        let playerY = 140, cpuY = 140, ballX = 250, ballY = 175, ballVx = 4, ballVy = 4;
+        let pScore = 0, cScore = 0;
+
+        function startPong() {
+            stopPong();
+            pScore = 0; cScore = 0; updatePongScore();
+            resetPongBall();
+            pongInterval = setInterval(mainPong, 1000/60);
+        }
+        function stopPong() { clearInterval(pongInterval); }
+        function resetPongBall() {
+            ballX = pCanvas.width/2; ballY = pCanvas.height/2;
+            ballVx = (Math.random() > 0.5 ? 4 : -4); ballVy = (Math.random() > 0.5 ? 4 : -4);
+        }
+        function updatePongScore() {
+            document.getElementById('pong-player').innerText = pScore;
+            document.getElementById('pong-cpu').innerText = cScore;
+        }
+        function mainPong() {
+            ballX += ballVx; ballY += ballVy;
+            if (ballY <= 0 || ballY >= pCanvas.height) ballVy *= -1;
+
+            // CPU AI simples
+            if (cpuY + 35 < ballY) cpuY += 3;
+            else if (cpuY + 35 > ballY) cpuY -= 3;
+
+            // Colisões com raquetes
+            if (ballX <= 20 && ballY >= playerY && ballY <= playerY + 70) ballVx = Math.abs(ballVx) * 1.05;
+            if (ballX >= pCanvas.width - 20 && ballY >= cpuY && ballY <= cpuY + 70) ballVx = -Math.abs(ballVx) * 1.05;
+
+            // Gols
+            if (ballX < 0) { cScore++; updatePongScore(); resetPongBall(); }
+            if (ballX > pCanvas.width) { pScore++; updatePongScore(); resetPongBall(); }
+
+            // Desenhar
+            pCtx.fillStyle = "#000"; pCtx.fillRect(0, 0, pCanvas.width, pCanvas.height);
+            pCtx.fillStyle = "#fff";
+            pCtx.fillRect(10, playerY, 10, 70); // Player
+            pCtx.fillRect(pCanvas.width - 20, cpuY, 10, 70); // CPU
+            pCtx.beginPath(); pCtx.arc(ballX, ballY, 7, 0, Math.PI*2); pCtx.fill(); // Ball
+        }
+        pCanvas.addEventListener('mousemove', e => {
+            const rect = pCanvas.getBoundingClientRect();
+            playerY = e.clientY - rect.top - 35;
+        });
+
+        // --- 3. FUTEBOL DE BOTÃO ---
+        let futInterval;
+        const fCanvas = document.getElementById('futCanvas');
+        const fCtx = fCanvas.getContext('2d');
+        let playerBot = {x: 80, y: 175, r: 25}, cpuBot = {x: 420, y: 175, r: 25}, futBall = {x: 250, y: 175, vx: 0, vy: 0, r: 12};
+        let futPScore = 0, futCScore = 0;
+
+        function startFutebol() {
+            stopFutebol();
+            futPScore = 0; futCScore = 0; updateFutScore();
+            resetFutField();
+            futInterval = setInterval(mainFutebol, 1000/60);
+        }
+        function stopFutebol() { clearInterval(futInterval); }
+        function resetFutField() {
+            futBall.x = 250; futBall.y = 175; futBall.vx = 0; futBall.vy = 0;
+            cpuBot.x = 420; cpuBot.y = 175;
+        }
+        function updateFutScore() {
+            document.getElementById('fut-player').innerText = futPScore;
+            document.getElementById('fut-cpu').innerText = futCScore;
+        }
+        function mainFutebol() {
+            // Movimento da bola com fricção
+            futBall.x += futBall.vx; futBall.y += futBall.vy;
+            futBall.vx *= 0.98; futBall.vy *= 0.98;
+
+            // Paredes
+            if(futBall.y - futBall.r <= 0 || futBall.y + futBall.r >= fCanvas.height) futBall.vy *= -1;
+
+            // AI Botão CPU
+            if(cpuBot.y < futBall.y) cpuBot.y += 2;
+            else cpuBot.y -= 2;
+
+            // Colisão Player com Bola
+            let distP = Math.hypot(playerBot.x - futBall.x, playerBot.y - futBall.y);
+            if(distP < playerBot.r + futBall.r) {
+                let angle = Math.atan2(futBall.y - playerBot.y, futBall.x - playerBot.x);
+                futBall.vx = Math.cos(angle) * 7; futBall.vy = Math.sin(angle) * 7;
             }
-            return snake[0].x < 0 || snake[0].x >= canvas.width || snake[0].y < 0 || snake[0].y >= canvas.height;
+
+            // Colisão CPU com Bola
+            let distC = Math.hypot(cpuBot.x - futBall.x, cpuBot.y - futBall.y);
+            if(distC < cpuBot.r + futBall.r) {
+                let angle = Math.atan2(futBall.y - cpuBot.y, futBall.x - cpuBot.x);
+                futBall.vx = Math.cos(angle) * 7; futBall.vy = Math.sin(angle) * 7;
+            }
+
+            // Gols
+            if(futBall.x - futBall.r <= 0) {
+                if(futBall.y > 100 && futBall.y < 250) { futCScore++; updateFutScore(); resetFutField(); }
+                else futBall.vx *= -1;
+            }
+            if(futBall.x + futBall.r >= fCanvas.width) {
+                if(futBall.y > 100 && futBall.y < 250) { futPScore++; updateFutScore(); resetFutField(); }
+                else futBall.vx *= -1;
+            }
+
+            // Desenho do Campo
+            fCtx.fillStyle = "#064e3b"; fCtx.fillRect(0, 0, fCanvas.width, fCanvas.height);
+            // Linhas
+            fCtx.strokeStyle = "#ffffff55"; fCtx.lineWidth = 3;
+            fCtx.beginPath(); fCtx.moveTo(250, 0); fCtx.lineTo(250, 350); fCtx.stroke();
+            fCtx.beginPath(); fCtx.arc(250, 175, 50, 0, Math.PI*2); fCtx.stroke();
+            // Gols
+            fCtx.fillStyle = "#ef4444"; fCtx.fillRect(0, 100, 8, 150);
+            fCtx.fillStyle = "#3b82f6"; fCtx.fillRect(492, 100, 8, 150);
+
+            // Botão Player (Azul)
+            fCtx.fillStyle = "#3b82f6"; fCtx.beginPath(); fCtx.arc(playerBot.x, playerBot.y, playerBot.r, 0, Math.PI*2); fCtx.fill();
+            // Botão CPU (Vermelho)
+            fCtx.fillStyle = "#ef4444"; fCtx.beginPath(); fCtx.arc(cpuBot.x, cpuBot.y, cpuBot.r, 0, Math.PI*2); fCtx.fill();
+            // Bola (Branca)
+            fCtx.fillStyle = "#fff"; fCtx.beginPath(); fCtx.arc(futBall.x, futBall.y, futBall.r, 0, Math.PI*2); fCtx.fill();
+        }
+        fCanvas.addEventListener('mousemove', e => {
+            const rect = fCanvas.getBoundingClientRect();
+            playerBot.x = Math.min(e.clientX - rect.left, 230); // Limita ao lado esquerdo do campo
+            playerBot.y = e.clientY - rect.top;
+        });
+
+        // --- 4. GENIUS ---
+        let geniusSequence = [], geniusUserStep = 0, geniusRound = 0, isDisplayingGenius = false;
+        function initGenius() {
+            geniusSequence = []; geniusRound = 0;
+            document.getElementById('genius-score').innerText = 0;
+        }
+        function startGenius() {
+            initGenius();
+            nextGeniusRound();
+        }
+        function nextGeniusRound() {
+            geniusRound++;
+            geniusUserStep = 0;
+            document.getElementById('genius-score').innerText = geniusRound;
+            geniusSequence.push(Math.floor(Math.random() * 4));
+            playGeniusSequence();
+        }
+        function playGeniusSequence() {
+            isDisplayingGenius = true;
+            let i = 0;
+            let interval = setInterval(() => {
+                flashGeniusBtn(geniusSequence[i]);
+                i++;
+                if(i >= geniusSequence.length) {
+                    clearInterval(interval);
+                    isDisplayingGenius = false;
+                }
+            }, 700);
+        }
+        function flashGeniusBtn(id) {
+            const btn = document.getElementById(`g-${id}`);
+            btn.classList.remove('opacity-70');
+            btn.classList.add('opacity-100', 'scale-105');
+            setTimeout(() => {
+                btn.classList.add('opacity-70');
+                btn.classList.remove('opacity-100', 'scale-105');
+            }, 350);
+        }
+        function geniusClick(id) {
+            if(isDisplayingGenius || geniusSequence.length === 0) return;
+            flashGeniusBtn(id);
+            if(id === geniusSequence[geniusUserStep]) {
+                geniusUserStep++;
+                if(geniusUserStep === geniusSequence.length) {
+                    setTimeout(nextGeniusRound, 1000);
+                }
+            } else {
+                alert(`Fim de jogo! Você alcançou a rodada ${geniusRound}`);
+                initGenius();
+            }
         }
 
-        document.addEventListener("keydown", changeDirection);
-        function changeDirection(event) {
-            const keyPressed = event.keyCode;
-            const LEFT = 37, UP = 38, RIGHT = 39, DOWN = 40;
-            const A = 65, W = 87, D = 68, S = 83;
-
-            if (changingDirection) return;
-
-            if ((keyPressed === LEFT || keyPressed === A) && dx === 0) { dx = -20; dy = 0; changingDirection = true; }
-            if ((keyPressed === UP || keyPressed === W) && dy === 0) { dx = 0; dy = -20; changingDirection = true; }
-            if ((keyPressed === RIGHT || keyPressed === D) && dx === 0) { dx = 20; dy = 0; changingDirection = true; }
-            if ((keyPressed === DOWN || keyPressed === S) && dy === 0) { dx = 0; dy = 20; changingDirection = true; }
+        // --- 5. JOGO DA VELHA ---
+        let vBoard = ["","","","","","","","",""], vTurn = "X", vActive = true;
+        function initVelha() {
+            vBoard = ["","","","","","","","",""]; vTurn = "X"; vActive = true;
+            document.getElementById('velha-status').innerText = "Vez de: X";
+            const grid = document.getElementById('velha-grid');
+            grid.innerHTML = "";
+            for(let i=0; i<9; i++) {
+                const b = document.createElement('button');
+                b.className = "w-20 h-20 bg-slate-900 text-3xl font-bold flex items-center justify-center rounded-xl hover:bg-slate-700 transition font-arcade";
+                b.onclick = () => makeVelhaMove(i);
+                b.id = `v-${i}`;
+                grid.appendChild(b);
+            }
+        }
+        function makeVelhaMove(i) {
+            if(vBoard[i] !== "" || !vActive) return;
+            vBoard[i] = vTurn;
+            document.getElementById(`v-${i}`).innerText = vTurn;
+            if(checkVelhaWin()) {
+                document.getElementById('velha-status').innerText = `Jogador ${vTurn} Venceu! 🎉`;
+                vActive = false;
+                return;
+            }
+            if(!vBoard.includes("")) {
+                document.getElementById('velha-status').innerText = "Empate!";
+                vActive = false;
+                return;
+            }
+            vTurn = vTurn === "X" ? "O" : "X";
+            document.getElementById('velha-status').innerText = `Vez de: ${vTurn}`;
+        }
+        function checkVelhaWin() {
+            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            return wins.some(w => vBoard[w[0]] !== "" && vBoard[w[0]] === vBoard[w[1]] && vBoard[w[1]] === vBoard[w[2]]);
         }
 
-        // --- 2. TRAVALÁVRASE (TERMO) ---
+        // --- 6. TRAVALÁVRASE ---
         const wordsList = ["LIVRO", "CARRO", "FESTA", "TERRA", "JOGOS", "PAPEL", "PORTA", "NOITE", "MUNDO", "PLANO"];
-        let secretWord = "";
-        let trAttempt = 1;
-        let gameOverTr = false;
+        let secretWord = "", trAttempt = 1, gameOverTr = false;
 
         function initTravalavra() {
             secretWord = wordsList[Math.floor(Math.random() * wordsList.length)];
-            trAttempt = 1;
-            gameOverTr = false;
+            trAttempt = 1; gameOverTr = false;
             document.getElementById('tr-attempt').innerText = trAttempt;
             document.getElementById('tr-message').innerText = "";
-            const input = document.getElementById('tr-input');
-            input.value = "";
-            input.disabled = false;
-
-            const grid = document.getElementById('tr-grid');
-            grid.innerHTML = "";
+            const input = document.getElementById('tr-input'); input.value = ""; input.disabled = false;
+            const grid = document.getElementById('tr-grid'); grid.innerHTML = "";
             for(let i=0; i<6; i++) {
-                const row = document.createElement('div');
-                row.className = "flex gap-2 justify-center";
+                const row = document.createElement('div'); row.className = "flex gap-2 justify-center";
                 for(let j=0; j<5; j++) {
                     const cell = document.createElement('div');
                     cell.className = "w-12 h-12 border-2 border-slate-700 rounded-lg flex items-center justify-center font-bold text-xl uppercase bg-slate-900 text-white";
-                    cell.id = `tr-${i}-${j}`;
-                    row.appendChild(cell);
+                    cell.id = `tr-${i}-${j}`; row.appendChild(cell);
                 }
                 grid.appendChild(row);
             }
         }
-
         function submitTravalavra() {
             if(gameOverTr) return;
             const input = document.getElementById('tr-input');
             const val = input.value.toUpperCase().trim();
             const msg = document.getElementById('tr-message');
-
-            if(val.length !== 5) {
-                msg.innerText = "A palavra deve ter 5 letras!";
-                return;
-            }
+            if(val.length !== 5) { msg.innerText = "A palavra deve ter 5 letras!"; return; }
             msg.innerText = "";
-
             for(let j=0; j<5; j++) {
                 const cell = document.getElementById(`tr-${trAttempt-1}-${j}`);
-                const letter = val[j];
-                cell.innerText = letter;
-
-                if(secretWord[j] === letter) {
-                    cell.className = "w-12 h-12 border-2 border-green-500 bg-green-600 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-white";
-                } else if(secretWord.includes(letter)) {
-                    cell.className = "w-12 h-12 border-2 border-yellow-500 bg-yellow-600 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-white";
-                } else {
-                    cell.className = "w-12 h-12 border-2 border-slate-700 bg-slate-800 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-slate-400";
-                }
+                const letter = val[j]; cell.innerText = letter;
+                if(secretWord[j] === letter) cell.className = "w-12 h-12 border-2 border-green-500 bg-green-600 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-white";
+                else if(secretWord.includes(letter)) cell.className = "w-12 h-12 border-2 border-yellow-500 bg-yellow-600 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-white";
+                else cell.className = "w-12 h-12 border-2 border-slate-700 bg-slate-800 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-slate-400";
             }
-
-            if(val === secretWord) {
-                msg.innerText = "Parabéns! Você acertou!";
-                gameOverTr = true;
-                input.disabled = true;
-                return;
-            }
-
-            trAttempt++;
-            document.getElementById('tr-attempt').innerText = trAttempt;
-            input.value = "";
-
-            if(trAttempt > 6) {
-                msg.innerText = `Fim de jogo! A palavra era: ${secretWord}`;
-                gameOverTr = true;
-                input.disabled = true;
-            }
+            if(val === secretWord) { msg.innerText = "Parabéns! Você acertou!"; gameOverTr = true; input.disabled = true; return; }
+            trAttempt++; document.getElementById('tr-attempt').innerText = trAttempt; input.value = "";
+            if(trAttempt > 6) { msg.innerText = `Fim de jogo! A palavra era: ${secretWord}`; gameOverTr = true; input.disabled = true; }
         }
 
-        // --- 3. CAÇA-PALAVRAS ---
+        // --- 7. CAÇA-PALAVRAS ---
         const cpWords = ["HTML", "CSS", "JS", "GAME"];
-        let foundCount = 0;
-        let clickedWordLetters = [];
+        let foundCount = 0, clickedWordLetters = [];
 
         function initCacaPalavra() {
-            foundCount = 0;
-            clickedWordLetters = [];
+            foundCount = 0; clickedWordLetters = [];
             document.getElementById('cp-found').innerText = foundCount;
             document.getElementById('cp-words-list').innerText = cpWords.join(", ");
             document.getElementById('cp-message').innerText = "";
-
-            const grid = document.getElementById('cp-grid');
-            grid.innerHTML = "";
-
+            const grid = document.getElementById('cp-grid'); grid.innerHTML = "";
             let matrix = Array(8).fill(null).map(() => Array(8).fill(''));
             const placements = [
-                {word: "HTML", r: 1, c: 2, dr: 0, dc: 1},
-                {word: "CSS", r: 3, c: 1, dr: 0, dc: 1},
-                {word: "JS", r: 5, c: 4, dr: 0, dc: 1},
-                {word: "GAME", r: 6, c: 2, dr: 1, dc: 0}
+                {word: "HTML", r: 1, c: 2, dr: 0, dc: 1}, {word: "CSS", r: 3, c: 1, dr: 0, dc: 1},
+                {word: "JS", r: 5, c: 4, dr: 0, dc: 1}, {word: "GAME", r: 6, c: 2, dr: 1, dc: 0}
             ];
-
-            placements.forEach(p => {
-                for(let i=0; i<p.word.length; i++) {
-                    matrix[p.r + i*p.dr][p.c + i*p.dc] = p.word[i];
-                }
-            });
-
+            placements.forEach(p => { for(let i=0; i<p.word.length; i++) matrix[p.r + i*p.dr][p.c + i*p.dc] = p.word[i]; });
             const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            for(let r=0; r<8; r++) {
-                for(let c=0; c<8; c++) {
-                    if(matrix[r][c] === '') {
-                        matrix[r][c] = alphabet[Math.floor(Math.random() * alphabet.length)];
-                    }
-                }
-            }
-
-            for(let r=0; r<8; r++) {
-                for(let c=0; c<8; c++) {
-                    const cell = document.createElement('div');
-                    cell.className = "w-9 h-9 bg-slate-800 hover:bg-slate-700 rounded flex items-center justify-center font-bold text-sm cursor-pointer transition select-none";
-                    cell.innerText = matrix[r][c];
-                    cell.onclick = () => selectCpCell(cell);
-                    grid.appendChild(cell);
-                }
-            }
-        }
-
-        function selectCpCell(cell) {
-            cell.classList.toggle('bg-cyan-600');
-            cell.classList.toggle('bg-slate-800');
-            clickedWordLetters.push(cell.innerText);
-            let currentWord = clickedWordLetters.join('');
-            let guessSpan = document.getElementById('cp-message');
-            guessSpan.innerText = "Tentando: " + currentWord;
-
-            if(cpWords.includes(currentWord)) {
-                guessSpan.innerText = `Você encontrou: ${currentWord}! 🎉`;
-                foundCount++;
-                document.getElementById('cp-found').innerText = foundCount;
-                clickedWordLetters = [];
-                if(foundCount === cpWords.length) {
-                    guessSpan.innerText = "Parabéns! Você encontrou todas as palavras!";
-                }
-            } else if(currentWord.length > 5) {
-                clickedWordLetters = [];
-                guessSpan.innerText = "Palavra incorreta, tente novamente.";
-            }
-        }
-
-        // --- 4. DESAFIO MATEMÁTICO ---
-        let mathScore = 0;
-        let currentAnswer = 0;
-
-        function initMath() {
-            mathScore = 0;
-            document.getElementById('math-score').innerText = mathScore;
-            document.getElementById('math-input').value = "";
-            document.getElementById('math-feedback').innerText = "";
-            generateMathQuestion();
-        }
-
-        function generateMathQuestion() {
-            const ops = ['+', '-', '*'];
-            const op = ops[Math.floor(Math.random() * ops.length)];
-            let n1 = Math.floor(Math.random() * 20) + 1;
-            let n2 = Math.floor(Math.random() * 20) + 1;
-
-            if(op === '-' && n1 < n2) [n1, n2] = [n2, n1];
-            if(op === '*') {
-                n1 = Math.floor(Math.random() * 10) + 1;
-                n2 = Math.floor(Math.random() * 10) + 1;
-            }
-
-            if(op === '+') currentAnswer = n1 + n2;
-            if(op === '-') currentAnswer = n1 - n2;
-            if(op === '*') currentAnswer = n1 * n2;
-
-            document.getElementById('math-question').innerText = `${n1} ${op} ${n2} = ?`;
-        }
-
-        function submitMath() {
-            const input = document.getElementById('math-input');
-            const val = parseInt(input.value);
-            const feedback = document.getElementById('math-feedback');
-
-            if(isNaN(val)) {
-                feedback.innerText = "Digite um número válido!";
-                feedback.className = "text-sm font-semibold h-6 text-red-400";
-                return;
-            }
-
-            if(val === currentAnswer) {
-                mathScore++;
-                document.getElementById('math-score').innerText = mathScore;
-                feedback.innerText = "Correto! Muito bem! 🎯";
-                feedback.className = "text-sm font-semibold h-6 text-green-400";
-                input.value = "";
-                setTimeout(() => { feedback.innerText = ""; generateMathQuestion(); }, 1000);
-            } else {
-                feedback.innerText = `Errado! A resposta era ${currentAnswer}.`;
-                feedback.className = "text-sm font-semibold h-6 text-red-400";
-                input.value = "";
-                setTimeout(() => { feedback.innerText = ""; generateMathQuestion(); }, 1500);
-            }
-        }
-    </script>
-</body>
-</html>
+            for(let r=0; r<8; r++) for(let c=0; c<8;
