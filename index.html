@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcade Box - Mini Jogos Clássicos</title>
+    <title>Arcade Box - O Portal de Mini-Jogos</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,154 +12,164 @@
         body { font-family: 'Poppins', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-950 text-white min-h-screen flex flex-col items-center justify-between">
+<body class="bg-slate-950 text-white min-h-screen flex flex-col items-center justify-between selection:bg-purple-500 selection:text-white">
     <!-- Header -->
-    <header class="w-full py-6 bg-slate-900 border-b border-slate-800 shadow-lg text-center">
-        <h1 class="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent font-arcade">Arcade Box</h1>
-        <p class="text-slate-400 text-sm mt-1">Sua coleção de jogos clássicos, arcade e raciocínio!</p>
+    <header class="w-full py-6 bg-slate-900 border-b border-slate-800 shadow-xl text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent font-arcade tracking-wider">Arcade Box</h1>
+        <p class="text-slate-400 text-xs sm:text-sm mt-2">Sua plataforma completa de jogos clássicos em um só lugar!</p>
     </header>
 
     <!-- Main Container -->
-    <main class="w-full max-w-5xl p-4 flex-1 flex flex-col items-center justify-center">
+    <main class="w-full max-w-6xl p-4 flex-1 flex flex-col items-center justify-center my-6">
         <!-- Menu Principal -->
-        <div id="menu" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-auto">
-            <button onclick="switchGame('snake')" class="bg-gradient-to-br from-green-600 to-emerald-800 hover:from-green-500 hover:to-emerald-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-green-500/30">
-                <span class="text-4xl mb-2">🐍</span>
+        <div id="menu" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+            <!-- 1. Snake -->
+            <button onclick="switchGame('snake')" class="bg-gradient-to-br from-green-600 to-emerald-900 hover:from-green-500 hover:to-emerald-800 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:-translate-y-1 hover:scale-105 border border-green-500/30 group">
+                <span class="text-4xl mb-3 group-hover:scale-110 transition">🐍</span>
                 <h2 class="text-sm font-bold font-arcade text-center">Cobrinha</h2>
-                <p class="text-xs text-green-200 mt-2 text-center">Coma as maçãs sem bater nas paredes!</p>
+                <p class="text-xs text-green-200 mt-2 text-center">Coma maçãs e cresça sem bater nas bordas!</p>
             </button>
-            <button onclick="switchGame('pong')" class="bg-gradient-to-br from-cyan-600 to-blue-800 hover:from-cyan-500 hover:to-blue-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-cyan-500/30">
-                <span class="text-4xl mb-2">🏓</span>
+            <!-- 2. Pong -->
+            <button onclick="switchGame('pong')" class="bg-gradient-to-br from-cyan-600 to-blue-900 hover:from-cyan-500 hover:to-blue-800 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:-translate-y-1 hover:scale-105 border border-cyan-500/30 group">
+                <span class="text-4xl mb-3 group-hover:scale-110 transition">🏓</span>
                 <h2 class="text-sm font-bold font-arcade text-center">Pong</h2>
-                <p class="text-xs text-cyan-200 mt-2 text-center">Rebata a bola contra a CPU!</p>
+                <p class="text-xs text-cyan-200 mt-2 text-center">Rebata a bola e vença a inteligência artificial!</p>
             </button>
-            <button onclick="switchGame('futebol')" class="bg-gradient-to-br from-red-600 to-rose-800 hover:from-red-500 hover:to-rose-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-red-500/30">
-                <span class="text-4xl mb-2">⚽</span>
+            <!-- 3. Futebol de Botão -->
+            <button onclick="switchGame('futebol')" class="bg-gradient-to-br from-red-600 to-rose-900 hover:from-red-500 hover:to-rose-800 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:-translate-y-1 hover:scale-105 border border-red-500/30 group">
+                <span class="text-4xl mb-3 group-hover:scale-110 transition">⚽</span>
                 <h2 class="text-sm font-bold font-arcade text-center">Futebol Botão</h2>
-                <p class="text-xs text-red-200 mt-2 text-center">Empurre o disco para marcar gols!</p>
+                <p class="text-xs text-red-200 mt-2 text-center">Empurre o disco com precisão e marque gols!</p>
             </button>
-            <button onclick="switchGame('genius')" class="bg-gradient-to-br from-violet-600 to-purple-800 hover:from-violet-500 hover:to-purple-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-purple-500/30">
-                <span class="text-4xl mb-2">🧠</span>
+            <!-- 4. Genius -->
+            <button onclick="switchGame('genius')" class="bg-gradient-to-br from-violet-600 to-purple-900 hover:from-violet-500 hover:to-purple-800 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:-translate-y-1 hover:scale-105 border border-purple-500/30 group">
+                <span class="text-4xl mb-3 group-hover:scale-110 transition">🧠</span>
                 <h2 class="text-sm font-bold font-arcade text-center">Genius</h2>
-                <p class="text-xs text-purple-200 mt-2 text-center">Memória de cores e sons!</p>
+                <p class="text-xs text-purple-200 mt-2 text-center">Memorize a sequência de cores e luzes!</p>
             </button>
-            <button onclick="switchGame('velha')" class="bg-gradient-to-br from-pink-600 to-rose-800 hover:from-pink-500 hover:to-rose-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-pink-500/30">
-                <span class="text-4xl mb-2">❌⭕</span>
+            <!-- 5. Jogo da Velha -->
+            <button onclick="switchGame('velha')" class="bg-gradient-to-br from-pink-600 to-rose-950 hover:from-pink-500 hover:to-rose-900 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:-translate-y-1 hover:scale-105 border border-pink-500/30 group">
+                <span class="text-4xl mb-3 group-hover:scale-110 transition">❌⭕</span>
                 <h2 class="text-sm font-bold font-arcade text-center">Jogo da Velha</h2>
-                <p class="text-xs text-pink-200 mt-2 text-center">Desafie um amigo ou a CPU!</p>
+                <p class="text-xs text-pink-200 mt-2 text-center">O clássico passatempo estratégico em dupla!</p>
             </button>
-            <button onclick="switchGame('travalavra')" class="bg-gradient-to-br from-indigo-600 to-slate-800 hover:from-indigo-500 hover:to-slate-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-indigo-500/30">
-                <span class="text-4xl mb-2">🔤</span>
+            <!-- 6. TravaLávrase -->
+            <button onclick="switchGame('travalavra')" class="bg-gradient-to-br from-indigo-600 to-slate-900 hover:from-indigo-500 hover:to-slate-800 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:-translate-y-1 hover:scale-105 border border-indigo-500/30 group">
+                <span class="text-4xl mb-3 group-hover:scale-110 transition">🔤</span>
                 <h2 class="text-sm font-bold font-arcade text-center">TravaLávrase</h2>
-                <p class="text-xs text-indigo-200 mt-2 text-center">Adivinhe a palavra em 6 chances!</p>
+                <p class="text-xs text-indigo-200 mt-2 text-center">Descubra a palavra secreta em 6 tentativas.</p>
             </button>
-            <button onclick="switchGame('cacapalavra')" class="bg-gradient-to-br from-teal-600 to-emerald-900 hover:from-teal-500 hover:to-emerald-800 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-teal-500/30">
-                <span class="text-4xl mb-2">🔍</span>
+            <!-- 7. Caça-Palavras -->
+            <button onclick="switchGame('cacapalavra')" class="bg-gradient-to-br from-teal-600 to-emerald-950 hover:from-teal-500 hover:to-emerald-900 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:-translate-y-1 hover:scale-105 border border-teal-500/30 group">
+                <span class="text-4xl mb-3 group-hover:scale-110 transition">🔍</span>
                 <h2 class="text-sm font-bold font-arcade text-center">Caça-Palavras</h2>
-                <p class="text-xs text-teal-200 mt-2 text-center">Encontre os termos na grade!</p>
+                <p class="text-xs text-teal-200 mt-2 text-center">Encontre os termos escondidos na matriz!</p>
             </button>
-            <button onclick="switchGame('matematica')" class="bg-gradient-to-br from-amber-600 to-orange-800 hover:from-amber-500 hover:to-orange-700 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:scale-105 border border-amber-500/30">
-                <span class="text-4xl mb-2">➕</span>
+            <!-- 8. Matemática -->
+            <button onclick="switchGame('matematica')" class="bg-gradient-to-br from-amber-600 to-orange-950 hover:from-amber-500 hover:to-orange-900 p-5 rounded-2xl shadow-xl flex flex-col items-center transition transform hover:-translate-y-1 hover:scale-105 border border-amber-500/30 group">
+                <span class="text-4xl mb-3 group-hover:scale-110 transition">➕</span>
                 <h2 class="text-sm font-bold font-arcade text-center">Matemática</h2>
-                <p class="text-xs text-amber-200 mt-2 text-center">Respostas rápidas e precisas!</p>
+                <p class="text-xs text-amber-200 mt-2 text-center">Resolva operações rápidas e teste sua mente!</p>
             </button>
         </div>
+
+        <!-- ÁREA DOS JOGOS -->
 
         <!-- 1. Jogo da Cobrinha -->
         <div id="game-snake" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-[400px] mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">⬅ Menu</button>
                 <div class="text-lg font-bold">Pontos: <span id="snake-score">0</span></div>
             </div>
-            <canvas id="snakeCanvas" width="400" height="400" class="border-4 border-slate-700 rounded-lg bg-black shadow-2xl"></canvas>
-            <div class="mt-4 text-xs text-slate-400">Setas do teclado ou W, A, S, D para controlar.</div>
+            <canvas id="snakeCanvas" width="400" height="400" class="border-4 border-slate-700 rounded-xl bg-black shadow-2xl"></canvas>
+            <div class="mt-4 text-xs text-slate-400 text-center">Use as setas do teclado ou W, A, S, D para controlar.</div>
         </div>
 
         <!-- 2. Pong -->
         <div id="game-pong" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-[500px] mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">⬅ Menu</button>
                 <div class="text-lg font-bold">Você: <span id="pong-player">0</span> | CPU: <span id="pong-cpu">0</span></div>
             </div>
-            <canvas id="pongCanvas" width="500" height="350" class="border-4 border-slate-700 rounded-lg bg-black shadow-2xl"></canvas>
-            <div class="mt-4 text-xs text-slate-400">Mova o mouse ou use Setas para cima/baixo para mover a raquete.</div>
+            <canvas id="pongCanvas" width="500" height="350" class="border-4 border-slate-700 rounded-xl bg-black shadow-2xl"></canvas>
+            <div class="mt-4 text-xs text-slate-400 text-center">Mova o cursor do mouse verticalmente para controlar a raquete.</div>
         </div>
 
-        <!-- 3. Futebol de Botão (Air Hockey Style) -->
+        <!-- 3. Futebol de Botão -->
         <div id="game-futebol" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-[500px] mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">⬅ Menu</button>
                 <div class="text-lg font-bold text-emerald-400">Você: <span id="fut-player">0</span> | CPU: <span id="fut-cpu">0</span></div>
             </div>
-            <canvas id="futCanvas" width="500" height="350" class="border-4 border-emerald-600 rounded-lg bg-emerald-950 shadow-2xl cursor-none"></canvas>
-            <div class="mt-4 text-xs text-slate-400">Mova o cursor do mouse dentro do campo para rebater o botão/bola!</div>
+            <canvas id="futCanvas" width="500" height="350" class="border-4 border-emerald-600 rounded-xl bg-emerald-950 shadow-2xl cursor-none"></canvas>
+            <div class="mt-4 text-xs text-slate-400 text-center">Movimente o mouse no seu campo para rebater o botão contra a bola!</div>
         </div>
 
-        <!-- 4. Genius (Memory Game) -->
+        <!-- 4. Genius -->
         <div id="game-genius" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-xs mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">⬅ Menu</button>
                 <div class="text-lg font-bold">Rodada: <span id="genius-score">0</span></div>
             </div>
-            <div class="grid grid-cols-2 gap-4 bg-slate-900 p-6 rounded-3xl border border-slate-800">
+            <div class="grid grid-cols-2 gap-4 bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-2xl">
                 <div id="g-0" onclick="geniusClick(0)" class="w-28 h-28 bg-red-600 rounded-tl-full cursor-pointer opacity-70 hover:opacity-100 transition duration-150"></div>
                 <div id="g-1" onclick="geniusClick(1)" class="w-28 h-28 bg-blue-600 rounded-tr-full cursor-pointer opacity-70 hover:opacity-100 transition duration-150"></div>
                 <div id="g-2" onclick="geniusClick(2)" class="w-28 h-28 bg-yellow-500 rounded-bl-full cursor-pointer opacity-70 hover:opacity-100 transition duration-150"></div>
                 <div id="g-3" onclick="geniusClick(3)" class="w-28 h-28 bg-green-600 rounded-br-full cursor-pointer opacity-70 hover:opacity-100 transition duration-150"></div>
             </div>
-            <button onclick="startGenius()" class="mt-6 bg-purple-600 hover:bg-purple-500 px-6 py-2 rounded-lg font-bold shadow">Iniciar Jogo</button>
+            <button onclick="startGenius()" class="mt-6 bg-purple-600 hover:bg-purple-500 px-6 py-2.5 rounded-lg font-bold shadow transition">Iniciar / Reiniciar</button>
         </div>
 
         <!-- 5. Jogo da Velha -->
         <div id="game-velha" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-xs mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">⬅ Menu</button>
                 <div id="velha-status" class="text-sm font-bold text-pink-400">Vez de: X</div>
             </div>
-            <div id="velha-grid" class="grid grid-cols-3 gap-2 bg-slate-800 p-3 rounded-2xl">
-                <!-- 9 casas geradas via JS -->
+            <div id="velha-grid" class="grid grid-cols-3 gap-2 bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-xl">
+                <!-- Gerado via Script -->
             </div>
-            <button onclick="initVelha()" class="mt-4 text-xs text-slate-400 underline">Reiniciar Jogo</button>
+            <button onclick="initVelha()" class="mt-4 text-xs text-slate-400 underline hover:text-white transition">Reiniciar Jogo</button>
         </div>
 
         <!-- 6. TravaLávrase -->
         <div id="game-travalavra" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-md mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">⬅ Menu</button>
                 <div class="text-lg font-bold">Tentativa: <span id="tr-attempt">1</span>/6</div>
             </div>
             <div id="tr-grid" class="grid grid-rows-6 gap-2 mb-4"></div>
-            <div id="tr-message" class="text-sm font-semibold mb-2 h-6 text-yellow-400"></div>
+            <div id="tr-message" class="text-sm font-semibold mb-2 h-6 text-yellow-400 text-center"></div>
             <div class="flex gap-2 mb-2">
                 <input type="text" id="tr-input" maxlength="5" class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-lg uppercase text-center font-bold tracking-widest w-40 text-xl focus:outline-none focus:border-purple-500" placeholder="PALAVRA">
-                <button onclick="submitTravalavra()" class="bg-purple-600 hover:bg-purple-500 px-6 py-2 rounded-lg font-bold shadow">Enviar</button>
+                <button onclick="submitTravalavra()" class="bg-purple-600 hover:bg-purple-500 px-6 py-2 rounded-lg font-bold shadow transition">Enviar</button>
             </div>
-            <button onclick="initTravalavra()" class="text-xs text-slate-400 underline mt-2">Reiniciar Jogo</button>
+            <button onclick="initTravalavra()" class="text-xs text-slate-400 underline mt-2 hover:text-white transition">Reiniciar Jogo</button>
         </div>
 
         <!-- 7. Caça-Palavras -->
         <div id="game-cacapalavra" class="hidden flex flex-col items-center w-full">
             <div class="flex justify-between w-full max-w-md mb-4 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">⬅ Menu</button>
                 <div class="text-sm">Encontradas: <span id="cp-found">0</span>/4</div>
             </div>
-            <p class="text-xs text-slate-400 mb-3">Palavras para achar: <span id="cp-words-list" class="font-bold text-cyan-400"></span></p>
-            <div id="cp-grid" class="grid grid-cols-8 gap-1 bg-slate-900 p-3 rounded-lg border border-slate-700 mb-4 select-none"></div>
-            <div id="cp-message" class="text-sm font-semibold text-green-400 h-6"></div>
-            <button onclick="initCacaPalavra()" class="text-xs text-slate-400 underline mt-2">Reiniciar Jogo</button>
+            <p class="text-xs text-slate-400 mb-3 text-center">Palavras para achar: <span id="cp-words-list" class="font-bold text-cyan-400"></span></p>
+            <div id="cp-grid" class="grid grid-cols-8 gap-1 bg-slate-900 p-3 rounded-xl border border-slate-700 mb-4 select-none shadow-xl"></div>
+            <div id="cp-message" class="text-sm font-semibold text-green-400 h-6 text-center"></div>
+            <button onclick="initCacaPalavra()" class="text-xs text-slate-400 underline mt-2 hover:text-white transition">Reiniciar Jogo</button>
         </div>
 
         <!-- 8. Matemática -->
         <div id="game-matematica" class="hidden flex flex-col items-center w-full max-w-md">
             <div class="flex justify-between w-full mb-6 items-center">
-                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold">⬅ Menu</button>
+                <button onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">⬅ Menu</button>
                 <div class="text-lg font-bold">Acertos: <span id="math-score">0</span></div>
             </div>
-            <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl w-full text-center shadow-xl">
+            <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl w-full text-center shadow-2xl">
                 <div id="math-question" class="text-3xl font-bold font-arcade mb-6 text-amber-400">5 + 3 = ?</div>
                 <div class="flex gap-2 justify-center mb-4">
                     <input type="number" id="math-input" class="bg-slate-800 border border-slate-700 px-4 py-3 rounded-lg text-center font-bold text-2xl w-36 focus:outline-none focus:border-amber-500" placeholder="Resposta">
-                    <button onclick="submitMath()" class="bg-amber-600 hover:bg-amber-500 px-6 py-3 rounded-lg font-bold shadow text-lg">Responder</button>
+                    <button onclick="submitMath()" class="bg-amber-600 hover:bg-amber-500 px-6 py-3 rounded-lg font-bold shadow text-lg transition">Responder</button>
                 </div>
                 <div id="math-feedback" class="text-sm font-semibold h-6"></div>
             </div>
@@ -168,10 +178,10 @@
 
     <!-- Footer -->
     <footer class="w-full py-4 text-center text-xs text-slate-500 border-t border-slate-900">
-        Arcade Box - Jogos clássicos em HTML, CSS e JS puro.
+        Arcade Box &copy; 2026 - Desenvolvido em HTML, Tailwind CSS e JavaScript Puro.
     </footer>
 
-    <!-- Lógica JavaScript -->
+    <!-- Lógica de Todos os Jogos -->
     <script>
         const menu = document.getElementById('menu');
         const games = {
@@ -297,255 +307,19 @@
             ballX += ballVx; ballY += ballVy;
             if (ballY <= 0 || ballY >= pCanvas.height) ballVy *= -1;
 
-            // CPU AI simples
             if (cpuY + 35 < ballY) cpuY += 3;
             else if (cpuY + 35 > ballY) cpuY -= 3;
 
-            // Colisões com raquetes
             if (ballX <= 20 && ballY >= playerY && ballY <= playerY + 70) ballVx = Math.abs(ballVx) * 1.05;
             if (ballX >= pCanvas.width - 20 && ballY >= cpuY && ballY <= cpuY + 70) ballVx = -Math.abs(ballVx) * 1.05;
 
-            // Gols
             if (ballX < 0) { cScore++; updatePongScore(); resetPongBall(); }
             if (ballX > pCanvas.width) { pScore++; updatePongScore(); resetPongBall(); }
 
-            // Desenhar
             pCtx.fillStyle = "#000"; pCtx.fillRect(0, 0, pCanvas.width, pCanvas.height);
             pCtx.fillStyle = "#fff";
-            pCtx.fillRect(10, playerY, 10, 70); // Player
-            pCtx.fillRect(pCanvas.width - 20, cpuY, 10, 70); // CPU
-            pCtx.beginPath(); pCtx.arc(ballX, ballY, 7, 0, Math.PI*2); pCtx.fill(); // Ball
+            pCtx.fillRect(10, playerY, 10, 70);
+            pCtx.fillRect(pCanvas.width - 20, cpuY, 10, 70);
+            pCtx.beginPath(); pCtx.arc(ballX, ballY, 7, 0, Math.PI*2); pCtx.fill();
         }
-        pCanvas.addEventListener('mousemove', e => {
-            const rect = pCanvas.getBoundingClientRect();
-            playerY = e.clientY - rect.top - 35;
-        });
-
-        // --- 3. FUTEBOL DE BOTÃO ---
-        let futInterval;
-        const fCanvas = document.getElementById('futCanvas');
-        const fCtx = fCanvas.getContext('2d');
-        let playerBot = {x: 80, y: 175, r: 25}, cpuBot = {x: 420, y: 175, r: 25}, futBall = {x: 250, y: 175, vx: 0, vy: 0, r: 12};
-        let futPScore = 0, futCScore = 0;
-
-        function startFutebol() {
-            stopFutebol();
-            futPScore = 0; futCScore = 0; updateFutScore();
-            resetFutField();
-            futInterval = setInterval(mainFutebol, 1000/60);
-        }
-        function stopFutebol() { clearInterval(futInterval); }
-        function resetFutField() {
-            futBall.x = 250; futBall.y = 175; futBall.vx = 0; futBall.vy = 0;
-            cpuBot.x = 420; cpuBot.y = 175;
-        }
-        function updateFutScore() {
-            document.getElementById('fut-player').innerText = futPScore;
-            document.getElementById('fut-cpu').innerText = futCScore;
-        }
-        function mainFutebol() {
-            // Movimento da bola com fricção
-            futBall.x += futBall.vx; futBall.y += futBall.vy;
-            futBall.vx *= 0.98; futBall.vy *= 0.98;
-
-            // Paredes
-            if(futBall.y - futBall.r <= 0 || futBall.y + futBall.r >= fCanvas.height) futBall.vy *= -1;
-
-            // AI Botão CPU
-            if(cpuBot.y < futBall.y) cpuBot.y += 2;
-            else cpuBot.y -= 2;
-
-            // Colisão Player com Bola
-            let distP = Math.hypot(playerBot.x - futBall.x, playerBot.y - futBall.y);
-            if(distP < playerBot.r + futBall.r) {
-                let angle = Math.atan2(futBall.y - playerBot.y, futBall.x - playerBot.x);
-                futBall.vx = Math.cos(angle) * 7; futBall.vy = Math.sin(angle) * 7;
-            }
-
-            // Colisão CPU com Bola
-            let distC = Math.hypot(cpuBot.x - futBall.x, cpuBot.y - futBall.y);
-            if(distC < cpuBot.r + futBall.r) {
-                let angle = Math.atan2(futBall.y - cpuBot.y, futBall.x - cpuBot.x);
-                futBall.vx = Math.cos(angle) * 7; futBall.vy = Math.sin(angle) * 7;
-            }
-
-            // Gols
-            if(futBall.x - futBall.r <= 0) {
-                if(futBall.y > 100 && futBall.y < 250) { futCScore++; updateFutScore(); resetFutField(); }
-                else futBall.vx *= -1;
-            }
-            if(futBall.x + futBall.r >= fCanvas.width) {
-                if(futBall.y > 100 && futBall.y < 250) { futPScore++; updateFutScore(); resetFutField(); }
-                else futBall.vx *= -1;
-            }
-
-            // Desenho do Campo
-            fCtx.fillStyle = "#064e3b"; fCtx.fillRect(0, 0, fCanvas.width, fCanvas.height);
-            // Linhas
-            fCtx.strokeStyle = "#ffffff55"; fCtx.lineWidth = 3;
-            fCtx.beginPath(); fCtx.moveTo(250, 0); fCtx.lineTo(250, 350); fCtx.stroke();
-            fCtx.beginPath(); fCtx.arc(250, 175, 50, 0, Math.PI*2); fCtx.stroke();
-            // Gols
-            fCtx.fillStyle = "#ef4444"; fCtx.fillRect(0, 100, 8, 150);
-            fCtx.fillStyle = "#3b82f6"; fCtx.fillRect(492, 100, 8, 150);
-
-            // Botão Player (Azul)
-            fCtx.fillStyle = "#3b82f6"; fCtx.beginPath(); fCtx.arc(playerBot.x, playerBot.y, playerBot.r, 0, Math.PI*2); fCtx.fill();
-            // Botão CPU (Vermelho)
-            fCtx.fillStyle = "#ef4444"; fCtx.beginPath(); fCtx.arc(cpuBot.x, cpuBot.y, cpuBot.r, 0, Math.PI*2); fCtx.fill();
-            // Bola (Branca)
-            fCtx.fillStyle = "#fff"; fCtx.beginPath(); fCtx.arc(futBall.x, futBall.y, futBall.r, 0, Math.PI*2); fCtx.fill();
-        }
-        fCanvas.addEventListener('mousemove', e => {
-            const rect = fCanvas.getBoundingClientRect();
-            playerBot.x = Math.min(e.clientX - rect.left, 230); // Limita ao lado esquerdo do campo
-            playerBot.y = e.clientY - rect.top;
-        });
-
-        // --- 4. GENIUS ---
-        let geniusSequence = [], geniusUserStep = 0, geniusRound = 0, isDisplayingGenius = false;
-        function initGenius() {
-            geniusSequence = []; geniusRound = 0;
-            document.getElementById('genius-score').innerText = 0;
-        }
-        function startGenius() {
-            initGenius();
-            nextGeniusRound();
-        }
-        function nextGeniusRound() {
-            geniusRound++;
-            geniusUserStep = 0;
-            document.getElementById('genius-score').innerText = geniusRound;
-            geniusSequence.push(Math.floor(Math.random() * 4));
-            playGeniusSequence();
-        }
-        function playGeniusSequence() {
-            isDisplayingGenius = true;
-            let i = 0;
-            let interval = setInterval(() => {
-                flashGeniusBtn(geniusSequence[i]);
-                i++;
-                if(i >= geniusSequence.length) {
-                    clearInterval(interval);
-                    isDisplayingGenius = false;
-                }
-            }, 700);
-        }
-        function flashGeniusBtn(id) {
-            const btn = document.getElementById(`g-${id}`);
-            btn.classList.remove('opacity-70');
-            btn.classList.add('opacity-100', 'scale-105');
-            setTimeout(() => {
-                btn.classList.add('opacity-70');
-                btn.classList.remove('opacity-100', 'scale-105');
-            }, 350);
-        }
-        function geniusClick(id) {
-            if(isDisplayingGenius || geniusSequence.length === 0) return;
-            flashGeniusBtn(id);
-            if(id === geniusSequence[geniusUserStep]) {
-                geniusUserStep++;
-                if(geniusUserStep === geniusSequence.length) {
-                    setTimeout(nextGeniusRound, 1000);
-                }
-            } else {
-                alert(`Fim de jogo! Você alcançou a rodada ${geniusRound}`);
-                initGenius();
-            }
-        }
-
-        // --- 5. JOGO DA VELHA ---
-        let vBoard = ["","","","","","","","",""], vTurn = "X", vActive = true;
-        function initVelha() {
-            vBoard = ["","","","","","","","",""]; vTurn = "X"; vActive = true;
-            document.getElementById('velha-status').innerText = "Vez de: X";
-            const grid = document.getElementById('velha-grid');
-            grid.innerHTML = "";
-            for(let i=0; i<9; i++) {
-                const b = document.createElement('button');
-                b.className = "w-20 h-20 bg-slate-900 text-3xl font-bold flex items-center justify-center rounded-xl hover:bg-slate-700 transition font-arcade";
-                b.onclick = () => makeVelhaMove(i);
-                b.id = `v-${i}`;
-                grid.appendChild(b);
-            }
-        }
-        function makeVelhaMove(i) {
-            if(vBoard[i] !== "" || !vActive) return;
-            vBoard[i] = vTurn;
-            document.getElementById(`v-${i}`).innerText = vTurn;
-            if(checkVelhaWin()) {
-                document.getElementById('velha-status').innerText = `Jogador ${vTurn} Venceu! 🎉`;
-                vActive = false;
-                return;
-            }
-            if(!vBoard.includes("")) {
-                document.getElementById('velha-status').innerText = "Empate!";
-                vActive = false;
-                return;
-            }
-            vTurn = vTurn === "X" ? "O" : "X";
-            document.getElementById('velha-status').innerText = `Vez de: ${vTurn}`;
-        }
-        function checkVelhaWin() {
-            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-            return wins.some(w => vBoard[w[0]] !== "" && vBoard[w[0]] === vBoard[w[1]] && vBoard[w[1]] === vBoard[w[2]]);
-        }
-
-        // --- 6. TRAVALÁVRASE ---
-        const wordsList = ["LIVRO", "CARRO", "FESTA", "TERRA", "JOGOS", "PAPEL", "PORTA", "NOITE", "MUNDO", "PLANO"];
-        let secretWord = "", trAttempt = 1, gameOverTr = false;
-
-        function initTravalavra() {
-            secretWord = wordsList[Math.floor(Math.random() * wordsList.length)];
-            trAttempt = 1; gameOverTr = false;
-            document.getElementById('tr-attempt').innerText = trAttempt;
-            document.getElementById('tr-message').innerText = "";
-            const input = document.getElementById('tr-input'); input.value = ""; input.disabled = false;
-            const grid = document.getElementById('tr-grid'); grid.innerHTML = "";
-            for(let i=0; i<6; i++) {
-                const row = document.createElement('div'); row.className = "flex gap-2 justify-center";
-                for(let j=0; j<5; j++) {
-                    const cell = document.createElement('div');
-                    cell.className = "w-12 h-12 border-2 border-slate-700 rounded-lg flex items-center justify-center font-bold text-xl uppercase bg-slate-900 text-white";
-                    cell.id = `tr-${i}-${j}`; row.appendChild(cell);
-                }
-                grid.appendChild(row);
-            }
-        }
-        function submitTravalavra() {
-            if(gameOverTr) return;
-            const input = document.getElementById('tr-input');
-            const val = input.value.toUpperCase().trim();
-            const msg = document.getElementById('tr-message');
-            if(val.length !== 5) { msg.innerText = "A palavra deve ter 5 letras!"; return; }
-            msg.innerText = "";
-            for(let j=0; j<5; j++) {
-                const cell = document.getElementById(`tr-${trAttempt-1}-${j}`);
-                const letter = val[j]; cell.innerText = letter;
-                if(secretWord[j] === letter) cell.className = "w-12 h-12 border-2 border-green-500 bg-green-600 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-white";
-                else if(secretWord.includes(letter)) cell.className = "w-12 h-12 border-2 border-yellow-500 bg-yellow-600 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-white";
-                else cell.className = "w-12 h-12 border-2 border-slate-700 bg-slate-800 rounded-lg flex items-center justify-center font-bold text-xl uppercase text-slate-400";
-            }
-            if(val === secretWord) { msg.innerText = "Parabéns! Você acertou!"; gameOverTr = true; input.disabled = true; return; }
-            trAttempt++; document.getElementById('tr-attempt').innerText = trAttempt; input.value = "";
-            if(trAttempt > 6) { msg.innerText = `Fim de jogo! A palavra era: ${secretWord}`; gameOverTr = true; input.disabled = true; }
-        }
-
-        // --- 7. CAÇA-PALAVRAS ---
-        const cpWords = ["HTML", "CSS", "JS", "GAME"];
-        let foundCount = 0, clickedWordLetters = [];
-
-        function initCacaPalavra() {
-            foundCount = 0; clickedWordLetters = [];
-            document.getElementById('cp-found').innerText = foundCount;
-            document.getElementById('cp-words-list').innerText = cpWords.join(", ");
-            document.getElementById('cp-message').innerText = "";
-            const grid = document.getElementById('cp-grid'); grid.innerHTML = "";
-            let matrix = Array(8).fill(null).map(() => Array(8).fill(''));
-            const placements = [
-                {word: "HTML", r: 1, c: 2, dr: 0, dc: 1}, {word: "CSS", r: 3, c: 1, dr: 0, dc: 1},
-                {word: "JS", r: 5, c: 4, dr: 0, dc: 1}, {word: "GAME", r: 6, c: 2, dr: 1, dc: 0}
-            ];
-            placements.forEach(p => { for(let i=0; i<p.word.length; i++) matrix[p.r + i*p.dr][p.c + i*p.dc] = p.word[i]; });
-            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            for(let r=0; r<8; r++) for(let c=0; c<8;
+        pCanvas.addEventListener('mousemove
