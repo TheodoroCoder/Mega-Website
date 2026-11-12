@@ -1,2 +1,2 @@
-# Mega-Website
-This is a mega website!
+# Mega-Arcade
+This is a mega arcade!
